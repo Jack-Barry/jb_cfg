@@ -25,6 +25,7 @@ PACKAGE_LIST+=("hurl")                          # CLI for API testing
 PACKAGE_LIST+=("jq")                            # JSON processor
 PACKAGE_LIST+=("lazygit")                       # Git CLI
 PACKAGE_LIST+=("neovim")                        # IDE
+PACKAGE_LIST+=("powerlevel10k")                 # Terminal theming
 PACKAGE_LIST+=("ripgrep")                       # Neovim: Telescope
 PACKAGE_LIST+=("tmux")                          # Terminal multiplexer
 PACKAGE_LIST+=("tree")                          # Pretty printout of dir structures
