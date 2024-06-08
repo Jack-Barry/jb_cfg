@@ -1,0 +1,26 @@
+# Ignore everything
+/*
+
+# Allow specific config files
+!.gitconfig
+!.gitignore
+!.p10k.zsh
+!.tmux.conf
+!.vimrc
+!.zshenv
+!.zshrc
+!README.md
+
+# Allow folders of config files
+# If folder includes some files that should still be ignored (e.g. .config), use this pattern:
+#   !<DIR>/
+#   <DIR>/*
+#   !<DIR>/<ALLOWED_SUBDIR>
+!.jb_scripts/
+!.config/
+.config/*
+.config/*/.DS_Store
+.config/*/*.un~
+!.config/kitty/
+!.config/lazygit/
+!.config/nvim/
