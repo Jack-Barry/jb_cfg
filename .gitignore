@@ -2,12 +2,10 @@
 /*
 
 # Allow specific config files
-!.gitconfig
 !.gitignore
 !.p10k.zsh
 !.tmux.conf
 !.vimrc
-!.zshenv
 !.zshrc
 !README.md
 
