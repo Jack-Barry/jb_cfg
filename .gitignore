@@ -19,6 +19,7 @@
 .config/*
 .config/*/.DS_Store
 .config/*/*.un~
+!.config/backgrounds/
 !.config/kitty/
 !.config/lazygit/
 !.config/nvim/
