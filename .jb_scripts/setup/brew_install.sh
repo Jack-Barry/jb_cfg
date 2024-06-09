@@ -18,6 +18,7 @@ fi
 # comments to remember what each of these packages is for
 PACKAGE_LIST=()
 PACKAGE_LIST+=("fd")                            # Neovim: Neotree
+PACKAGE_LIST+=("fnm")                           # Fast Node Manager
 PACKAGE_LIST+=("font-jetbrains-mono-nerd-font") # Favorite font
 PACKAGE_LIST+=("gh")                            # GitHub CLI
 PACKAGE_LIST+=("git-delta")                     # diff viewer (side by side)
@@ -26,6 +27,7 @@ PACKAGE_LIST+=("jq")                            # JSON processor
 PACKAGE_LIST+=("lazygit")                       # Git CLI
 PACKAGE_LIST+=("neovim")                        # IDE
 PACKAGE_LIST+=("powerlevel10k")                 # Terminal theming
+PACKAGE_LIST+=("rbenv")                         # Ruby version management
 PACKAGE_LIST+=("ripgrep")                       # Neovim: Telescope
 PACKAGE_LIST+=("tmux")                          # Terminal multiplexer
 PACKAGE_LIST+=("tree")                          # Pretty printout of dir structures

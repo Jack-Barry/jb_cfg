@@ -1,34 +1,3 @@
-autoload -U add-zsh-hook
-
-### Begin NVM
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# NVM automatic version switching
-load-nvmrc() {
-  local nvmrc_path
-  nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version
-    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-      nvm use
-    fi
-  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-### End NVM
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -142,15 +111,12 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #### END P10K CUSTOMIZATIONS ####
-
-# Set custom lazygit config location
-export XDG_CONFIG_HOME="$HOME/.config"
-# rbenv
-eval "$(rbenv init - zsh)"
-
 ########################################
 ### Begin Preferences
 ########################################
+# Custom lazygit config location
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Actually clear when hitting Ctrl+l
 function clear_screen() {
   clear
@@ -171,3 +137,9 @@ alias lg_jbcfg='lazygit --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 ########################################
 ### End Aliases
 ########################################
+
+# fnm (Node)
+eval "$(fnm env --use-on-cd)"
+# rbenv (Ruby)
+eval "$(rbenv init - zsh)"
+
