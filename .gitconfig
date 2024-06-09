@@ -1,0 +1,16 @@
+[user]
+  name = Jack Barry
+  email = Jack@Barry.onl
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[alias]
+  # shorthand for checkout
+  co = checkout
+  # checkout trunk branch
+  cotrunk = !git checkout $(git trunk)
+  # log with custom formatting
+  lg = log --graph --color=always --abbrev-commit --decorate --date=relative --pretty='tformat:%C(auto)%h%d%n%C(blue)%s%C(auto)%n%C(cyan)%ar by %an%C(auto)%n%b%n'
+  # get name of trunk branch
+  trunk = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
