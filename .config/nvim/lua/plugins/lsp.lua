@@ -10,6 +10,7 @@ return {
       "marksman",
       "rust_analyzer",
       "svelte",
+      "taplo",
       "tsserver",
       "vimls",
       "yamlls",

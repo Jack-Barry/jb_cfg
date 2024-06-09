@@ -1,7 +1,13 @@
 return {
+  { "marilari88/neotest-jest" },
   { "marilari88/neotest-vitest" },
   {
     "nvim-neotest/neotest",
-    opts = { adapters = { "neotest-vitest" } },
+    opts = {
+      adapters = {
+        "neotest-jest",
+        "neotest-vitest",
+      },
+    },
   },
 }

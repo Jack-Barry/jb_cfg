@@ -8,4 +8,5 @@ vim.cmd([[
 ]])
 
 -- Override basic Vim settings
+vim.g.mapleader = "\\"
 vim.opt.syntax = "off" -- Use Treesitter and friends instead

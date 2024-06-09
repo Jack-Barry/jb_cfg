@@ -2,3 +2,8 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never --syntax-theme base16-256 -s
+customCommands:
+  - key: '<C-t>'
+    context: 'localBranches'
+    description: 'Checkout trunk branch'
+    command: 'git cotrunk'
