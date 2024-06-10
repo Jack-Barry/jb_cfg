@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ##############################################
-# Installs Oh My Zsh and Powerlevel10k theme
+# Installs Oh My Zsh
 ##############################################
 if [ ! -d ".oh-my-zsh" ]; then
 	echo "📦 Installing Oh My Zsh"

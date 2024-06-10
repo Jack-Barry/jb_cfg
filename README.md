@@ -7,6 +7,5 @@ This is a repo to store my preferred settings for tools on a dev machine.
 Run
 
 ```bash
-curl -Lks https://raw.githubusercontent.com/Jack-Barry/jb_cfg/main/.jb_scripts/install.sh | /bin/bash
+curl https://raw.githubusercontent.com/Jack-Barry/jb_cfg/main/.jb_scripts/install.sh | /bin/bash
 ```
-
