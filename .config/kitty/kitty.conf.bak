@@ -1145,6 +1145,7 @@ tab_bar_style separator
 #: The foreground and background colors.
 
 # background_opacity 1.0
+background_opacity 0.3
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1169,6 +1170,7 @@ tab_bar_style separator
 #: dynamic_background_opacity was enabled in the original config.
 
 # background_blur 0
+background_blur 64
 
 #: Set to a positive value to enable background blur (blurring of the
 #: visuals behind a transparent window) on platforms that support it.
@@ -1181,10 +1183,12 @@ tab_bar_style separator
 #: macOS and KDE.
 
 # background_image none
+background_image ~/.config/backgrounds/big_bend.png
 
 #: Path to a background image. Must be in PNG format.
 
 # background_image_layout tiled
+background_image_layout cscaled
 
 #: Whether to tile, scale or clamp the background image. The value can
 #: be one of tiled, mirror-tiled, scaled, clamped, centered or
@@ -1204,6 +1208,7 @@ tab_bar_style separator
 #: Changing this option by reloading the config is not supported.
 
 # background_tint 0.0
+background_tint 0.9
 
 #: How much to tint the background image by the background color. This
 #: option makes it easier to read the text. Tinting is done using the
@@ -1690,6 +1695,7 @@ tab_bar_style separator
 #: better off just hiding the titlebar with hide_window_decorations.
 
 # macos_option_as_alt no
+macos_option_as_alt yes
 
 #: Use the Option key as an Alt key on macOS. With this set to no,
 #: kitty will use the macOS native Option+Key to enter Unicode
@@ -1711,6 +1717,7 @@ tab_bar_style separator
 #: supported.
 
 # macos_quit_when_last_window_closed no
+macos_quit_when_last_window_closed yes
 
 #: Have kitty quit when all the top-level windows are closed on macOS.
 #: By default, kitty will stay running, even with no open windows, as
@@ -2513,3 +2520,9 @@ tab_bar_style separator
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_THEME
+# Night Owl
+include current-theme.conf
+# END_KITTY_THEME
