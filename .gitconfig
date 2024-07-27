@@ -1,16 +1,24 @@
 [user]
-  name = Jack Barry
-  email = Jack@Barry.onl
+	name = Jack Barry
+	email = Jack@Barry.onl
 [init]
   defaultBranch = main
 [pull]
-  rebase = true
+	rebase = true
+[fetch]
+  prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [alias]
   # shorthand for checkout
   co = checkout
   # checkout trunk branch
   cotrunk = !git checkout $(git trunk)
+  fetchtrunk = !git fetch --update-head-ok origin $(git trunk):$(git trunk)
   # log with custom formatting
-  lg = log --graph --color=always --abbrev-commit --decorate --date=relative --pretty='tformat:%C(auto)%h%d%n%C(blue)%s%C(auto)%n%C(cyan)%ar by %an%C(auto)%n%b%n'
+  lg = log --graph --color=always --abbrev-commit --decorate --date=relative --pretty='tformat:%C(auto)%h%d%n%C(blue)%s%C(auto)%n%C(cyan)%ar by %an (%aE) %C(auto)%n%b%n'
   # get name of trunk branch
   trunk = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'

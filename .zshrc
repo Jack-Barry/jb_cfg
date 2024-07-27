@@ -1,3 +1,20 @@
+# Homebrew shell completion
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+# compinit is used for completions
+autoload -U compinit
+compinit
+
+# fnm (Node)
+eval "$(fnm env --use-on-cd)"
+
+# rbenv (Ruby)
+eval "$(rbenv init - zsh)"
+FPATH=~/.rbenv/completions:"$FPATH"
+
+# 1Password shell completion
+eval "$(op completion zsh)"; compdef _op op
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -134,12 +151,21 @@ bindkey '^L' clear_screen
 # Git for .jb_cfg (machine config repo)
 alias jbcfg='git --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias lg_jbcfg='lazygit --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
+
+# Tmux sessions
+function muxsesh() {
+  tmux new-session -A -s "$1"
+}
+alias mux='muxsesh stuff'
+
+# Go to Obsidian Default vault dir
+alias cdnotes='cd ~/Nextcloud/Notes/Obsidian/General'
+
+# Print all terminal colors
+function print_term_colors() {
+  for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
 ########################################
 ### End Aliases
 ########################################
-
-# fnm (Node)
-eval "$(fnm env --use-on-cd)"
-# rbenv (Ruby)
-eval "$(rbenv init - zsh)"
 

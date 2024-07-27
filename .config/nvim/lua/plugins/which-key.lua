@@ -1,6 +1,6 @@
 return {
   "folke/which-key.nvim",
   opts = function(_, opts)
-    opts.defaults["<leader>h"] = { name = "+hurl" }
+    table.insert(opts.spec[1], { "<leader>h", group = "hurl" })
   end,
 }

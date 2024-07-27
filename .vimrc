@@ -1,9 +1,7 @@
 " language
 syntax on                     " Basic syntax highlighting
-" setlocal spell spelllang=en_us " Enable spell check
 
 " keys
-" nnoremap <space> <nop>
 let mapleader="\\"
 set backspace=indent,eol,start    " Make backspace key work as one would expect
 
@@ -14,6 +12,7 @@ set ignorecase " Case-insensitive search by default
 set smartcase  " Case-sensitive search when specified
 set hlsearch   " Highlight search matches
 set incsearch  " Highlight search matches dynamically as they are typed
+
 " begin search for current selection in visual mode
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
@@ -32,15 +31,12 @@ set visualbell " Screen flashes instead of audible bell
 set undofile " Allow undo history to persist after file is closed
 
 " visuals
-" set colorcolumn=100
 set formatoptions=qrn1
 set relativenumber     " Show relative line numbers to left of editor
 set nu rnu             " Show current absolute line number to left of editor
-set scrolloff=5        " Keep at least 5 lines at bottom of screen when scrolling
+set scrolloff=10       " Keep at least 10 lines at bottom of screen when scrolling
 set textwidth=80
-set wrap
 set cursorline
-" set termguicolors
 
 " autocomplete
 set wildmenu
@@ -53,14 +49,6 @@ filetype plugin on
 " make & trigger && to preserve flags
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
-
-" custom commands
-" nnoremap <leader>w <C-w>v<C-w>l " Split window vertically
-" nnoremap <C-h> <C-w>h                " Move between splits to left
-" nnoremap <C-j> <C-w>j                " Move between splits down
-" nnoremap <C-k> <C-w>k                " Move between splits up
-" nnoremap <C-l> <C-w>l                " Move between splits to right
-nnoremap <silent> <leader>cs :<C-u>nohlsearch<CR><C-l> " Clear search highlighting temporarily
 
 " tabs & indentation
 set tabstop=2     " 2 spaces per tab
