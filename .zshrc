@@ -1,9 +1,9 @@
-# Homebrew shell completion
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
 # compinit is used for completions
 autoload -U compinit
 compinit
+
+# Homebrew shell completion
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 # fnm (Node)
 eval "$(fnm env --use-on-cd)"
@@ -152,11 +152,24 @@ bindkey '^L' clear_screen
 alias jbcfg='git --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias lg_jbcfg='lazygit --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 
+### TMUX Begin
 # Tmux sessions
-function muxsesh() {
-  tmux new-session -A -s "$1"
+function mux() {
+    local session_name="$1"
+    if [ -z "$session_name" ]; then
+      session_name="stuff"
+    fi
+    tmux new-session -A -s "$session_name"
 }
-alias mux='muxsesh stuff'
+
+# Autocompletion based on currently open sessions
+_mux() {
+    local -a sessions
+    sessions=($(tmux list-sessions -F "#{session_name}" 2>/dev/null))
+    compadd -a sessions
+}
+compdef _mux mux
+### TMUX End
 
 # Go to Obsidian Default vault dir
 alias cdnotes='cd ~/Nextcloud/Notes/Obsidian/General'
