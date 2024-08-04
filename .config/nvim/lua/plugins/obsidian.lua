@@ -29,7 +29,7 @@ return {
     workspaces = {
       {
         name = "Default",
-        path = "~/OneDrive - College Board/Notes/Obsidian/Default/",
+        path = "~/Nextcloud/Notes/Obsidian/General",
       },
     },
     mappings = {
