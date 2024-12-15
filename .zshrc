@@ -178,6 +178,16 @@ alias cdnotes='cd ~/Nextcloud/Notes/Obsidian/General'
 function print_term_colors() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
+
+function set_colorscheme_light() {
+  kitty +kitten themes --reload-in=all Catppuccin-Latte
+  tmux set -g window-style 'bg=color253'
+}
+
+function set_colorscheme_dark() {
+  kitty +kitten themes --reload-in=all Catppuccin-Mocha
+  tmux set -g window-style 'bg=color236'
+}
 ########################################
 ### End Aliases
 ########################################
