@@ -4,7 +4,9 @@
 # Allow specific config files
 !.gitconfig
 !.gitignore
+!.markdownlint.jsonc
 !.p10k.zsh
+!.prettierrc.json
 !.tmux.conf
 !.vimrc
 !.zshrc
