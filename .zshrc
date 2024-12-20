@@ -180,13 +180,23 @@ function print_term_colors() {
 }
 
 function set_colorscheme_light() {
+  echo 'Setting theme in macOS'
+  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
+  echo 'Setting theme in kitty'
   kitty +kitten themes --reload-in=all Catppuccin-Latte
-  tmux set -g window-style 'bg=color253'
+  echo 'Setting theme in tmux'
+  # Fails if tmux isn't running, that's OK
+  tmux set -g window-style 'bg=color253' || true
 }
 
 function set_colorscheme_dark() {
+  echo 'Setting theme in macOS'
+  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+  echo 'Setting theme in kitty'
   kitty +kitten themes --reload-in=all Catppuccin-Mocha
-  tmux set -g window-style 'bg=color236'
+  echo 'Setting theme in tmux'
+  # Fails if tmux isn't running, that's OK
+  tmux set -g window-style 'bg=color236' || true
 }
 ########################################
 ### End Aliases
