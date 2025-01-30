@@ -6,7 +6,7 @@ compinit
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 # fnm (Node)
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines)"
 
 # rbenv (Ruby)
 eval "$(rbenv init - zsh)"
