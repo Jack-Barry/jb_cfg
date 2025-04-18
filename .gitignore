@@ -28,4 +28,5 @@
 .config/kitty/kitty.conf.bak
 !.config/lazygit/
 !.config/nvim/
+!.config/starship.toml
 !.config/stats/
