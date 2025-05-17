@@ -2,13 +2,9 @@ git:
   branchLogCmd: git lg
   paging:
     colorArg: always
-    pager: delta --dark --paging=never --syntax-theme base16-256 -s
+    pager: delta --paging=never --light -s
 customCommands:
   - key: "<C-t>"
     context: "localBranches"
     description: "Checkout trunk branch"
     command: "git cotrunk"
-  # - key: "W"
-  #   command: git commit --no-verify
-  #   context: "global"
-  #   subprocess: true

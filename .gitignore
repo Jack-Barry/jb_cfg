@@ -30,3 +30,8 @@
 !.config/nvim/
 !.config/starship.toml
 !.config/stats/
+!Documents/
+Documents/*
+!Documents/Appearance Watcher/
+Documents/Appearance Watcher/*
+!Documents/Appearance Watcher/handle_appearance_change.sh

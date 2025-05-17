@@ -24,7 +24,7 @@ PACKAGE_LIST+=("font-jetbrains-mono-nerd-font") # Favorite font
 PACKAGE_LIST+=("gh")                            # GitHub CLI
 PACKAGE_LIST+=("git-delta")                     # diff viewer (side by side)
 PACKAGE_LIST+=("hurl")                          # CLI for API testing
-PACKAGE_LIST+=("jq")                            # JSON processor
+PACKAGE_LIST+=("jq")                            # JSON parser
 PACKAGE_LIST+=("lazygit")                       # Git CLI
 PACKAGE_LIST+=("neovim")                        # IDE
 PACKAGE_LIST+=("rbenv")                         # Ruby version management
@@ -34,6 +34,7 @@ PACKAGE_LIST+=("starship")                      # Terminal theming
 PACKAGE_LIST+=("stats")                         # System stats in menu bar
 PACKAGE_LIST+=("tmux")                          # Terminal multiplexer
 PACKAGE_LIST+=("tree")                          # Pretty printout of dir structures
+PACKAGE_LIST+=("yq")                            # YAML parser
 
 PACKAGES_TO_INSTALL=()
 PACKAGES_TO_UPDATE=()
