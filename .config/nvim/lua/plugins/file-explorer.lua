@@ -32,5 +32,16 @@ return {
         end,
       },
     },
+    window = {
+      auto_expand_width = true,
+      mappings = {
+        ["F"] = {
+          function(state)
+            os.execute("open -R " .. state.tree:get_node().path)
+          end,
+          desc = "Show in Finder",
+        },
+      },
+    },
   },
 }
