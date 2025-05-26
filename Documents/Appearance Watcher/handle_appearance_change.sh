@@ -1,20 +1,14 @@
 #!/bin/zsh
-export PATH="/Applications/kitty.app/Contents/MacOS:/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 APPEARANCE_MODE="$1"
 
 if [ "$APPEARANCE_MODE" = "dark" ]; then
-  KITTY_THEME="Catppuccin-Mocha"
   TMUX_BG="color236"
 fi
 
 if [ "$APPEARANCE_MODE" = "light" ]; then
-  KITTY_THEME="Catppuccin-Latte"
   TMUX_BG="color253"
-fi
-
-if [ -n "$KITTY_THEME" ]; then
-  kitty +kitten themes --reload-in=all "$KITTY_THEME"
 fi
 
 if [ -n "$TMUX_BG" ]; then
