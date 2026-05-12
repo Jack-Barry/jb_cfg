@@ -19,6 +19,9 @@ return {
           daily_notes = {
             folder = "Journal",
           },
+          note_id_func = function(title)
+            return title
+          end,
         },
       },
     }
