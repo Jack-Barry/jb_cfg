@@ -1,21 +1,3 @@
--- Default behavior for note_id_func
--- local makeZettlekastenId = function(title)
---   -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
---   -- In this case a note with the title 'My new note' will be given an ID that looks
---   -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
---   local suffix = ""
---   if title ~= nil then
---     -- If title is given, transform it into valid file name.
---     suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
---   else
---     -- If title is nil, just add 4 random uppercase letters to the suffix.
---     for _ = 1, 4 do
---       suffix = suffix .. string.char(math.random(65, 90))
---     end
---   end
---   return tostring(os.time()) .. "-" .. suffix
--- end
-
 return {
   "epwalsh/obsidian.nvim",
   version = "*",
@@ -24,15 +6,23 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  opts = {
-    ui = { enable = false },
-    workspaces = {
+  opts = function(_, opts)
+    opts.ui = { enable = false }
+    opts.workspaces = {
       {
-        name = "Default",
-        path = "~/Nextcloud/Notes/Obsidian/General",
+        name = "Notes 2.0",
+        path = "~/Nextcloud/Notes/Obsidian/Notes 2.0",
+        overrides = {
+          disable_frontmatter = true,
+          notes_subdir = "Zettelkasten",
+          new_notes_location = "notes_subdir",
+          daily_notes = {
+            folder = "Journal",
+          },
+        },
       },
-    },
-    mappings = {
+    }
+    opts.mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ["gf"] = {
         action = function()
@@ -47,9 +37,10 @@ return {
         end,
         opts = { buffer = true, expr = true },
       },
-    },
-    note_id_func = function(title)
-      return title
-    end,
+    }
+  end,
+  keys = {
+    { "<leader>on", "<cmd>ObsidianNew<CR>", desc = "New Note" },
+    { "<leader>oj", "<cmd>ObsidianToday<CR>", desc = "New Journal Entry for Today" },
   },
 }

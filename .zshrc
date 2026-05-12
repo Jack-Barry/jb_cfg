@@ -67,12 +67,14 @@ compdef _mux mux
 ### TMUX End
 
 # Go to Obsidian Default vault dir
-alias cdnotes='cd ~/Nextcloud/Notes/Obsidian/General'
+alias cdnotes='cd ~/Nextcloud/Notes/Obsidian/Notes\ 2.0'
 
 # Print all terminal colors
 function print_term_colors() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
+
+alias sync_clock='sudo sntp -sS time.apple.com'
 
 function set_colorscheme_light() {
   echo 'Setting theme in macOS'

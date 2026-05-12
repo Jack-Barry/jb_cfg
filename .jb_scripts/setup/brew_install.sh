@@ -18,6 +18,7 @@ fi
 # comments to remember what each of these packages is for
 PACKAGE_LIST=()
 PACKAGE_LIST+=("1password-cli")                 # 1Password
+PACKAGE_LIST+=("cargo-nextest")                 # Supports Rust tests in Neovim
 PACKAGE_LIST+=("fd")                            # Neovim: Neotree
 PACKAGE_LIST+=("fnm")                           # Fast Node Manager
 PACKAGE_LIST+=("font-jetbrains-mono-nerd-font") # Favorite font
