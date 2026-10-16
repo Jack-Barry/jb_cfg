@@ -15,26 +15,14 @@ else
     jbcfg pull
 fi
 
-CONFLICTING_FILES=$(jbcfg checkout 2>&1 | egrep "\s+\.|README\.md")
-if [[ ${#CONFLICTING_FILES[@]} == 0 ]]; then
-    echo "👌 Looks like a fresh install"
-else
-    echo "  Backing up overlapping config files..."
-    while IFS= read -r line; do
-        file=$(echo "$line" | awk '{$1=$1; print}')
-        file_dir=$(dirname "$file")
-        mkdir -p "$BACKUP_DIR/$file_dir"
-        if [ -f "$file" ]; then
-            backup_path="$BACKUP_DIR/$file"
-            echo " Copying $file to $backup_path"
-            mv "$file" "$backup_path"
-        else
-            if [ ! -z "$file" ]; then
-                echo " File does not exist: '$file'"
-            fi
-        fi
-    done <<<"$CONFLICTING_FILES"
-fi
+echo "Backing up files that the repo will replace..."
+jbcfg ls-tree -r --name-only HEAD | while IFS= read -r file; do
+    if [[ -e "$HOME/$file" || -L "$HOME/$file" ]]; then
+        mkdir -p "$BACKUP_DIR/$(dirname "$file")"
+        mv "$HOME/$file" "$BACKUP_DIR/$file"
+        echo "Moved $file to $BACKUP_DIR/$file"
+    fi
+done
 
 echo "🏗  Populating $HOME with config from repo..."
 CHECKOUT_RESULT=$(jbcfg checkout 2>&1)
