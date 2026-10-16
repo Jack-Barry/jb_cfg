@@ -23,18 +23,10 @@ curl https://raw.githubusercontent.com/Jack-Barry/jb_cfg/main/.jb_cfg_utils/scri
 
 ## How Does it Work?
 
+This repository is "bare" cloned to your user directory, so that the files under source control can live there, even though its `.git` directory lives inside of `.jb_cfg`.
+
+After initial install, you can create a profile to extend this config inside a `.jb_cfg_profiles/<PROFILE_NAME>` that you can keep under source control on its own. This allows you to add features that may be specific to one context, like work, that you don't want landing in a public repository such as this one. This is so that you can have your cake and eat it too; one base config for your common personal settings, and an ability to extend that when you need to.
+
 - The base loads first, and the profile loads last, so profile values win.
   - **NOTE** `.zshenv`, `.zshrc`, Git and Neovim configs are the only things that support extension currently.
-- Git and Neovim read from `~/.jb_cfg_profiles/current`, and zsh reads `JB_CFG_PROFILE_DIR` (`~/.jb_cfg_profiles/<PROFILE_NAME>`).
 - Each profile directory for extending the config mirrors `$HOME` dir.
-
-## Manual Stuff
-
-There's some things that I don't want to be bothered with automating.
-
-- If `markdown-preview.nvim` isn't playing nice, (just shows a pop-up with the
-  Node.JS version) try running this to fix it:
-
-  ```shell
-  ~/.local/share/nvim/lazy/markdown-preview.nvim/app/install.sh
-  ```
