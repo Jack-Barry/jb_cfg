@@ -9,7 +9,23 @@ return {
               os.execute("open -R " .. item.file)
             end,
           },
-          include = { ".github", ".gitignore", ".husky", ".npmrc" },
+          include = {
+            ".config",
+            ".gitconfig",
+            ".github",
+            ".gitignore",
+            ".husky",
+            ".jb_cfg_utils",
+            ".jb_cfg_profiles",
+            ".markdownlint.jsonc",
+            ".npmrc",
+            ".prettierrc",
+            ".prettierrc.json",
+            ".tmux.conf",
+            ".vimrc",
+            ".zshenv",
+            ".zshrc",
+          },
           win = {
             list = {
               wo = { relativenumber = true },

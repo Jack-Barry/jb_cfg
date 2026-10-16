@@ -8,3 +8,11 @@ customCommands:
     context: "localBranches"
     description: "Checkout trunk branch"
     command: "git cotrunk"
+  - key: "n"
+    context: "worktrees"
+    prompts:
+      - type: "input"
+        title: "What would you like to name the worktree (e.g. ticket number/ID)?"
+        key: "WorktreeName"
+    command: "~/.jb_cfg_utils/scripts/git/new_worktree.sh {{.Form.WorktreeName}}"
+    loadingText: "Creating new worktree"

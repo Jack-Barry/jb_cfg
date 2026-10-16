@@ -1,5 +1,8 @@
 # Ignore everything
 /*
+# Ignore junk files at any depth
+.DS_Store
+*.un~
 
 # Allow specific config files
 !.gitconfig
@@ -9,6 +12,7 @@
 !.prettierrc.json
 !.tmux.conf
 !.vimrc
+!.zshenv
 !.zshrc
 !README.md
 
@@ -18,16 +22,20 @@
 #   <DIR>/*
 #   !<DIR>/<ALLOWED_SUBDIR>
 !.jb_scripts/
+!.jb_cfg_utils/
+!.jb_cfg_profiles
+.jb_cfg_profiles/*
+!.jb_cfg_profiles/default
 !.config/
 .config/*
-.config/*/.DS_Store
-.config/*/*.un~
 !.config/backgrounds/
 !.config/kitty/
 .config/kitty/current-theme.conf
 .config/kitty/kitty.conf.bak
 !.config/lazygit/
+.config/lazygit/theme.yml
 !.config/nvim/
+.config/nvim/lua/profile
 !.config/starship.toml
 !.config/stats/
 !Documents/

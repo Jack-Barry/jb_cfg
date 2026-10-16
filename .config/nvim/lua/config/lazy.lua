@@ -17,14 +17,25 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local profile = require("config.profile")
+
+local spec = { { "LazyVim/LazyVim", import = "lazyvim.plugins" } }
+
+-- Profile extras load right after LazyVim, before your own plugins.
+for _, extra in ipairs(profile.load("extras") or {}) do
+  table.insert(spec, { import = "lazyvim.plugins.extras." .. extra })
+end
+
+table.insert(spec, { import = "plugins" })
+table.insert(spec, { import = "plugins.langs" })
+
+if profile.exists("plugins") then
+  table.insert(spec, { import = "profile.plugins" })
+end
+
 require("lazy").setup({
-  spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import/override with your plugins
-    { import = "plugins" },
-    { import = "plugins.langs" },
-  },
+  spec = spec,
+  lockfile = profile.exists("") and (profile.dir .. "/lazy-lock.json") or nil,
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.

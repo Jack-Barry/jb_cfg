@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Points ~/.jb_cfg_profiles/current at the profile named in JB_CFG_PROFILE.
+set -euo pipefail
+target="$JB_CFG_PROFILE_DIR"
+[[ -d "$target" ]] || {
+    echo "No profile directory: $target" >&2
+    exit 1
+}
+ln -sfn "$target" "$JB_CFG_CURRENT_PROFILE_DIR"
+ln -sfn "$JB_CFG_CURRENT_PROFILE_DIR/.config/nvim/lua/profile" "$HOME/.config/nvim/lua/profile"
+
+# Link version controlled workflows from the profile to ~/Library/Services, so they are available in the Services menu.
+lib_services_source_dir="$JB_CFG_PROFILE_DIR/Library/Services"
+lib_services_dir="$HOME/Library/Services"
+mkdir -p "$lib_services_dir"
+
+# Remove links from an earlier run, so a removed workflow leaves no stale link.
+find "$lib_services_dir" -maxdepth 1 -type l -lname "$HOME/.jb_cfg_profiles/*" -delete
+
+for workflow in "$lib_services_source_dir"/*.workflow; do
+    [[ -e "$workflow" ]] || continue
+    ln -sfn "$workflow" "$lib_services_dir/$(basename "$workflow")"
+done

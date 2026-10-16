@@ -1,41 +1,44 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-
+command_timeout = 1000
 format = """\
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
-$git_metrics\
 $git_status\
 $fill\
+$status\
 $cmd_duration\
-$rust\
 $nodejs\
-$battery\
+$python\
 $line_break\
 $character
 """
 
-[battery]
-format = '[\[$symbol$percentage\]]($style)'
-
-[[battery.display]]
-threshold = 100
-
 [character]
-success_symbol = '[➜](bold green)'
-error_symbol = '[➜](bold red) '
+success_symbol = '[ ❯](bold green)'
+error_symbol = '[ ❯](bold red)'
 
 [cmd_duration]
 min_time = 5000
 
+[directory]
+format = ' [$path]($style)'
+
+[fill]
+symbol = '—'
+style = 'bold dimmed black'
+
 [git_branch]
 symbol = " "
-format = "[$symbol$branch(:$remote_branch)]($style)"
+format = " [$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 format = "([$all_status$ahead_behind]($style))"
 
 [nodejs]
@@ -43,7 +46,10 @@ symbol = " "
 format = '[\[$symbol($version)\]]($style)'
 version_format = "${raw}"
 
-[rust]
+[python]
 format = '[\[$symbol($version)\]]($style)'
 version_format = "${raw}"
 
+[status]
+disabled = false
+map_symbol = true

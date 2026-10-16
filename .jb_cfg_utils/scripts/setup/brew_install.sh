@@ -4,14 +4,16 @@
 ##############################################
 echo "📦 Installing Homebrew and favorite packages"
 
+: "${HOMEBREW_PREFIX:=/opt/homebrew}"
+
 if [[ ! -d "/usr/local/Homebrew" && ! -d "/opt/homebrew" ]]; then
-  echo "Homebrew not already installed, installing it..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo "✅ Homebrew installed"
+    echo "Homebrew not already installed, installing it..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "✅ Homebrew installed"
 else
-  echo "Homebrew already installed, updating..."
-  brew update
-  echo "✅ Homebrew is ready for package management"
+    echo "Homebrew already installed, updating..."
+    brew update
+    echo "✅ Homebrew is ready for package management"
 fi
 
 # Yes I know I could declare the PACKAGE_LIST all in one go, but I wanted inline
@@ -41,24 +43,24 @@ PACKAGES_TO_INSTALL=()
 PACKAGES_TO_UPDATE=()
 
 for pkg in "${PACKAGE_LIST[@]}"; do
-  if [[ -n "${pkg// /}" ]]; then
-    if [[ ! -d "/usr/local/Caskroom/$pkg" && ! -d "/usr/local/Cellar/$pkg" ]]; then
-      PACKAGES_TO_INSTALL+=("$pkg")
-    else
-      PACKAGES_TO_UPDATE+=("$pkg")
+    if [[ -n "${pkg// /}" ]]; then
+        if [[ ! -d "$HOMEBREW_PREFIX/Caskroom/$pkg" && ! -d "$HOMEBREW_PREFIX/Cellar/$pkg" ]]; then
+            PACKAGES_TO_INSTALL+=("$pkg")
+        else
+            PACKAGES_TO_UPDATE+=("$pkg")
+        fi
     fi
-  fi
 done
 
 if [ ${#PACKAGES_TO_INSTALL[@]} == 0 ]; then
-  echo "✅ All expected packages already installed"
+    echo "✅ All expected packages already installed"
 else
-  brew install "${PACKAGES_TO_INSTALL[@]}"
+    brew install "${PACKAGES_TO_INSTALL[@]}"
 fi
 
 if [ ${#PACKAGES_TO_UPDATE[@]} != 0 ]; then
-  echo "Updating packages to latest..."
-  brew upgrade
+    echo "Updating packages to latest..."
+    brew upgrade
 fi
 
 echo "🚀 Homebrew packages installation complete"
