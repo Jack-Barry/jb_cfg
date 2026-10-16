@@ -19,7 +19,6 @@ return {
             ".jb_cfg_profiles",
             ".markdownlint.jsonc",
             ".npmrc",
-            ".prettierrc",
             ".prettierrc.json",
             ".tmux.conf",
             ".vimrc",

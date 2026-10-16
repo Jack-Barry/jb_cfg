@@ -8,7 +8,6 @@
 !.gitconfig
 !.gitignore
 !.markdownlint.jsonc
-!.p10k.zsh
 !.prettierrc.json
 !.tmux.conf
 !.vimrc
@@ -21,7 +20,6 @@
 #   !<DIR>/
 #   <DIR>/*
 #   !<DIR>/<ALLOWED_SUBDIR>
-!.jb_scripts/
 !.jb_cfg_utils/
 !.jb_cfg_profiles
 .jb_cfg_profiles/*
@@ -38,8 +36,3 @@
 .config/nvim/lua/profile
 !.config/starship.toml
 !.config/stats/
-!Documents/
-Documents/*
-!Documents/Appearance Watcher/
-Documents/Appearance Watcher/*
-!Documents/Appearance Watcher/handle_appearance_change.sh
