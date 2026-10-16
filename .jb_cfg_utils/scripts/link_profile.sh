@@ -21,3 +21,15 @@ for workflow in "$lib_services_source_dir"/*.workflow; do
     [[ -e "$workflow" ]] || continue
     ln -sfn "$workflow" "$lib_services_dir/$(basename "$workflow")"
 done
+
+# The appearance app runs a fixed path in ~/Documents. OneDrive can make ~/Documents
+# a symlink, and Git cannot track files under a symlinked folder. So this writes a
+# small untracked wrapper there that runs the tracked script.
+appearance_dir="$HOME/Documents/Appearance Watcher"
+mkdir -p "$appearance_dir"
+cat >"$appearance_dir/handle_appearance_change.sh" <<'EOF'
+#!/bin/zsh
+# Written by jb_cfg link_profile.sh. Edit ~/.jb_cfg_utils/scripts/handle_appearance_change.sh instead.
+exec "$HOME/.jb_cfg_utils/scripts/handle_appearance_change.sh" "$@"
+EOF
+chmod +x "$appearance_dir/handle_appearance_change.sh"
