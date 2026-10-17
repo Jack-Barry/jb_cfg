@@ -26,7 +26,7 @@ fi
 # Oh My Zsh runs compinit. zsh reads fpath only when compinit runs,
 # so every completion directory must be in fpath before this source line.
 fpath=(
-  "$HOME/.zsh/functions"
+  "$HOME/.jb_cfg_utils/shell_helpers"
   "$HOMEBREW_PREFIX/share/zsh/site-functions"
   $fpath
 )
