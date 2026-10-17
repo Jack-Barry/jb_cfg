@@ -250,4 +250,6 @@ function awswhoami() {
 ########################################
 
 # Load profile-specific .zshrc if it exists -- keep this at the bottom
-[[ -f "$JB_CFG_PROFILE_DIR/.zshrc" ]] && . "$JB_CFG_PROFILE_DIR/.zshrc"
+if [[ -f "$JB_CFG_PROFILE_DIR/.zshrc" ]]; then
+  . "$JB_CFG_PROFILE_DIR/.zshrc"
+fi

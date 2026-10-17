@@ -13,4 +13,6 @@ export JB_CFG_PROFILE_DIR="$HOME/.jb_cfg_profiles/$JB_CFG_PROFILE"
 export JB_CFG_CURRENT_PROFILE_DIR="$HOME/.jb_cfg_profiles/current"
 
 # Load profile-specific .zshenv if it exists -- keep this at the bottom
-[[ -f "$JB_CFG_PROFILE_DIR/.zshenv" ]] && . "$JB_CFG_PROFILE_DIR/.zshenv"
+if [[ -f "$JB_CFG_PROFILE_DIR/.zshenv" ]] then
+    . "$JB_CFG_PROFILE_DIR/.zshenv"
+fi
