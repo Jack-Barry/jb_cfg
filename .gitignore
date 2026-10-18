@@ -7,6 +7,7 @@
 # Allow specific config files
 !.gitconfig
 !.gitignore
+!.hushlogin
 !.markdownlint.jsonc
 !.prettierrc.json
 !.tmux.conf
