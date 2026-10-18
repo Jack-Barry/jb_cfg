@@ -21,6 +21,7 @@
 #   <DIR>/*
 #   !<DIR>/<ALLOWED_SUBDIR>
 !.jb_cfg_utils/
+.jb_cfg_utils/logs
 !.jb_cfg_profiles
 .jb_cfg_profiles/*
 !.jb_cfg_profiles/default
