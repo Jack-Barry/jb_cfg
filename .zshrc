@@ -32,12 +32,15 @@ fpath=(
 )
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""   # Starship draws the prompt
-plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(colorize zsh-autosuggestions zsh-syntax-highlighting)
 # Allow additional OMZ plugins to be loaded
 if [[ -f "$JB_CFG_PROFILE_DIR/omz_plugins.zsh" ]]; then
   . "$JB_CFG_PROFILE_DIR/omz_plugins.zsh"
 fi
 source "$ZSH/oh-my-zsh.sh"
+# Get colorized output from cat and less using the OMZ colorize plugin
+alias cat=ccat
+alias less=cless
 
 ########################################
 ### Tools
@@ -84,7 +87,7 @@ bindkey '^L' clear_screen
 alias jbcfg='git --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias lg_jbcfg='lazygit --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias jbcfg_link_profile="$JB_CFG_SCRIPTS_DIR/link_profile.sh"
-alias jbcfg_update='jbcfg pull && jbcfg_link_profile'
+alias jbcfg_update="jbcfg pull && $JB_CFG_SCRIPTS_DIR/setup.sh && jbcfg_link_profile && . $HOME/.zshenv && . $HOME/.zshrc"
 
 # Fix macOS clock sync issues
 alias sync_clock='sudo sntp -sS time.apple.com'

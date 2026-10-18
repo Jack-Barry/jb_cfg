@@ -21,6 +21,7 @@ fi
 PACKAGE_LIST=()
 PACKAGE_LIST+=("1password-cli")                 # 1Password
 PACKAGE_LIST+=("cargo-nextest")                 # Supports Rust tests in Neovim
+PACKAGE_LIST+=("chroma")                        # OMZ colorize plugin
 PACKAGE_LIST+=("fd")                            # Neovim: Neotree
 PACKAGE_LIST+=("fnm")                           # Fast Node Manager
 PACKAGE_LIST+=("font-jetbrains-mono-nerd-font") # Favorite font
