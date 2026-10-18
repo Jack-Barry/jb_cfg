@@ -33,6 +33,10 @@ fpath=(
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""   # Starship draws the prompt
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+# Allow additional OMZ plugins to be loaded
+if [[ -f "$JB_CFG_PROFILE_DIR/omz_plugins.zsh" ]]; then
+  . "$JB_CFG_PROFILE_DIR/omz_plugins.zsh"
+fi
 source "$ZSH/oh-my-zsh.sh"
 
 ########################################
