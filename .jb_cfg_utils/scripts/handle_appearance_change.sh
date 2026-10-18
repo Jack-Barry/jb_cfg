@@ -1,7 +1,7 @@
 #!/bin/zsh
 # The background app runs this script when macOS appearance changes.
 # $1 is "dark" or "light".
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
 APPEARANCE_MODE="$1"
 
@@ -19,6 +19,6 @@ tmux set -g window-style "bg=$TMUX_BG" 2>/dev/null || true
 # Do not add theme.yml to the dotfiles repo.
 cat > "$HOME/.config/lazygit/theme.yml" <<YAML
 git:
-  paging:
-    pager: delta --paging=never --$APPEARANCE_MODE -s
+  diffRenderers:
+    - command: delta --paging=never --$APPEARANCE_MODE -s
 YAML
