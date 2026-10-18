@@ -84,6 +84,7 @@ bindkey '^L' clear_screen
 alias jbcfg='git --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias lg_jbcfg='lazygit --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias jbcfg_link_profile="$JB_CFG_SCRIPTS_DIR/link_profile.sh"
+alias jbcfg_update='jbcfg pull && jbcfg_link_profile'
 
 # Fix macOS clock sync issues
 alias sync_clock='sudo sntp -sS time.apple.com'
