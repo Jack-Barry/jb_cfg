@@ -89,6 +89,9 @@ alias lg_jbcfg='lazygit --git-dir="$HOME/.jb_cfg/" --work-tree="$HOME"'
 alias jbcfg_link_profile="$JB_CFG_SCRIPTS_DIR/link_profile.sh"
 alias jbcfg_update="jbcfg pull && $JB_CFG_SCRIPTS_DIR/setup.sh && jbcfg_link_profile && . $HOME/.zshenv && . $HOME/.zshrc"
 
+# Open the nvim config dir in nvim
+alias editnvimconfig='cd "$XDG_CONFIG_HOME/nvim" && nvim'
+
 # Fix macOS clock sync issues
 alias sync_clock='sudo sntp -sS time.apple.com'
 
